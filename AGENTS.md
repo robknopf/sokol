@@ -1,3 +1,17 @@
+## Fork policy (robknopf/sokol only, never upstream)
+
+This repository is libsk's fork of floooh/sokol. In this fork, the owner allows
+LLM agents to edit the sokol headers and docs, and to add, commit and push
+when the user asks. This section replaces the "LLM usage rules" and "Never git
+add, commit or push" rules below, but only for work in this fork.
+
+Contributions to floooh/sokol follow upstream's rules below and CONTRIBUTING.md,
+which forbid LLM generated code in the headers:
+
+- Create PR branches from `upstream/master` (https://github.com/floooh/sokol),
+  never from this fork's `master`, and cherry-pick only the commits for the PR.
+- Never include this section or its commit in a PR.
+
 ## LLM usage rules
 
 LLM generation is strictly **forbidden** in the sokol headers, shaders and
