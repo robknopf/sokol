@@ -336,3 +336,51 @@ UTEST(sokol_gl, default_context) {
     T(sgl_default_context().id == SGL_DEFAULT_CONTEXT.id);
     shutdown();
 }
+
+static void triangle(void) {
+    sgl_begin_triangles();
+    sgl_v2f(0.0f, 0.0f);
+    sgl_v2f(1.0f, 0.0f);
+    sgl_v2f(0.0f, 1.0f);
+    sgl_end();
+}
+
+// The commands recorded between two sgl_layer() calls are one range, as
+// sgl_draw_layer_range() expects: draws in one layer merge, and a new layer
+// starts a new command.
+UTEST(sokol_gl, layer_command_ranges) {
+    init();
+    sgl_layer(1);
+    const int first1 = sgl_num_commands();
+    triangle();
+    triangle();
+    const int first2 = sgl_num_commands();
+    sgl_layer(2);
+    triangle();
+    sgl_layer(1);
+    const int first3 = sgl_num_commands();
+    triangle();
+    const int end = sgl_num_commands();
+    T(first1 == 0);
+    T(first2 == 1);     // the two draws in layer 1 are one command
+    T(first3 == 2);     // layer 2 did not merge into layer 1's command
+    T(end == 3);        // back in layer 1: a new command, not merged into the first
+    T(_sgl.cur_ctx->commands.ptr[0].layer_id == 1);
+    T(_sgl.cur_ctx->commands.ptr[1].layer_id == 2);
+    T(_sgl.cur_ctx->commands.ptr[2].layer_id == 1);
+    // ranges out of bounds are clamped (outside a pass, nothing is drawn)
+    T(!_sgl.cur_ctx->error.any);
+    shutdown();
+}
+
+UTEST(sokol_gl, draw_layer_range_bounds) {
+    init();
+    // no vertices recorded: every range is a no-op, including invalid ones
+    sgl_draw_layer_range(0, 0, 0);
+    sgl_draw_layer_range(0, -5, 10);
+    sgl_draw_layer_range(0, 100, 10);
+    sgl_draw_layer_range(0, 0, -1);
+    sgl_context_draw_layer_range(sgl_default_context(), 0, 0, 1 << 30);
+    T(sgl_num_commands() == 0);
+    shutdown();
+}
