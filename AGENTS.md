@@ -1,6 +1,6 @@
 ## Fork policy (robknopf/sokol only, never upstream)
 
-This repository is libsk's fork of floooh/sokol. In this fork, the owner allows
+This repository is libwgrender's fork of floooh/sokol. In this fork, the owner allows
 LLM agents to edit the sokol headers and docs, and to add, commit and push
 when the user asks. This section replaces the "LLM usage rules" and "Never git
 add, commit or push" rules below, but only for work in this fork.
