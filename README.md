@@ -1,3 +1,8 @@
+> **This is the Whirling Gizmo fork of [floooh/sokol](https://github.com/floooh/sokol), not the original.**
+> It includes changes made with LLM assistance. It honors upstream's LLM policy ([AGENTS.md](AGENTS.md), [CONTRIBUTING.md](CONTRIBUTING.md)),
+> which doesn't accept LLM-generated code in the headers: none of this fork's LLM-assisted changes will be submitted upstream
+> until they have been rewritten by hand. Headers the fork has altered say so at the top. For the original, use floooh/sokol.
+
 <p align="center">
     <img src="assets/logo_full_large.png" style="width: 60%" /><br/><br/>Simple
     <a href="https://github.com/nothings/stb/blob/master/docs/stb_howto.txt">STB-style</a>
