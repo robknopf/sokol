@@ -8,7 +8,7 @@
     Project URL: https://github.com/floooh/sokol
 
     Altered source: this is the Whirling Gizmo fork's version
-    (https://github.com/robknopf/sokol), not the original. Changed from
+    (https://github.com/whirlinggizmo/sokol), not the original. Changed from
     floooh/sokol: sgl_draw_layer_range() and sgl_context_draw_layer_range()
     are added. The fork's git history has each change.
 

@@ -1,4 +1,4 @@
-## Fork policy (robknopf/sokol only, never upstream)
+## Fork policy (whirlinggizmo/sokol only, never upstream)
 
 This repository is the Whirling Gizmo fork of floooh/sokol, used by Whirling Gizmo
 projects. In this fork, the owner allows
