@@ -11,7 +11,9 @@ which forbid LLM generated code in the headers:
 
 - Create PR branches from `upstream/master` (https://github.com/floooh/sokol),
   never from this fork's `master`, and cherry-pick only the commits for the PR.
-- Never include this section or its commit in a PR.
+- Never include this section, the README's fork note, or their commits in a PR.
+- LLM-assisted changes in this fork are never submitted upstream until they have
+  been rewritten by hand. Never prepare such a PR from them.
 
 ## LLM usage rules
 
